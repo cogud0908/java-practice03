@@ -26,60 +26,63 @@ class TV {
 	public void channel(int channel) {
 		if (power) {
 			if (channel > 50 || channel < 0)
-				System.out.println("채널이 없습니다.");
+				return;
+			else if (channel >= 50)
+				this.channel = 0;
+			else if (channel < 0)
+				this.channel = 50;
 			else
 				this.channel = channel;
-		} else
-			System.out.println("전원이 꺼져있습니다.");
+		} 
 	}
 
 	public void channel(boolean upDown) {
+
 		if (power) {
 			if (upDown) {
-				if (channel == 50)
+				if (channel >= 50) {
 					channel = 0;
-				else
+				} else
 					channel++;
-			} else if (channel == 0)
-				channel = 50;
+			}
 			else
-				channel--;
-		} else
-			System.out.println("전원이 꺼져있습니다.");
+			{
+				if(channel == 0)
+					channel = 50;
+				else
+				channel = 0;
+			}
+		} 
 	}
 
-	public void volume(int channel) {
+	public void volume(int volume) {
 		if (power) {
-			if (channel > 50 || channel < 0) {
-				System.out.println("볼륨은 0~50으로 설정해주세요.");
-				return;
+			if (volume >= 50) {
+				this.volume = 0;
 			} else
-				this.channel = channel;
-		} else
-			System.out.println("전원이 꺼져있습니다.");
+				this.volume = volume;
+		} 
 	}
 
 	public void volume(boolean upDown) {
 		if (power) {
-			if (upDown)
-			{
-				if(volume > 50)
-					System.out.println("최대 볼륨입니다.");
-				else
-				volume++;
+			if (upDown) {
+				if (volume >= 50) {
+					volume = 0;					
+				} else
+					volume++;
 			}
 			else
 			{
-				if(volume > 50)
-					System.out.println("최저 볼륨입니다.");
+				if(volume == 0)
+					volume = 50;
 				else
-				volume--;
+					volume--;
 			}
-		} else
-			System.out.println("전원이 꺼져있습니다.");
+		} 
 	}
 
 	public void status() {
-		System.out.println("TV[power = " + true + ", channel = " + channel + " voulme = " + volume + "]");
+		System.out.println("TV[power = " + power + ", channel = " + channel + ", volume = " + volume + "]");
 	}
 }
