@@ -2,7 +2,7 @@ package prob6;
 
 import java.util.Scanner;
 
-abstract class Calc
+abstract class Calc // 추상클래스
 {
 	protected int a;
 	protected int b;
@@ -11,11 +11,13 @@ abstract class Calc
 	{
 		this.a = a; this.b = b;
 	}
+
+	abstract public int calculate(); // 추상메소드
 }
 
 class Add extends Calc
 {
-	public int calculate()
+	public int calculate() // 오버라이딩
 	{
 		return a+b;
 	}
@@ -23,7 +25,7 @@ class Add extends Calc
 
 class Sub extends Calc
 {
-	public int calculate()
+	public int calculate() // 오버라이딩
 	{
 		return a-b;
 	}
@@ -31,7 +33,7 @@ class Sub extends Calc
 
 class Mul extends Calc
 {
-	public int calculate()
+	public int calculate() // 오버라이딩
 	{
 		return a*b;
 	}
@@ -39,7 +41,7 @@ class Mul extends Calc
 
 class Div extends Calc
 {
-	public int calculate()
+	public int calculate() // 오버라이딩
 	{
 		return a/b;
 	}
